@@ -60,13 +60,19 @@ jobs:
           kustomize edit set image ${{ secrets.STAPACR_LOGIN_SERVER }}/${{ env.IMAGE_NAME }}:${{ steps.gen-version.outputs.VERSION }}
           cat kustomization.yaml
     
+    # 최신 커밋 가져오기 (pull)
+    - name: Pull latest changes
+      run: |
+          git config --global user.email "rootain00@gmail.com"
+          git config --global user.name "jeongeun0"
+          git pull origin main
+
     - name: Commit files
       run: |
           cd manifests
           echo "`ls`"
           git config --global user.email "rootain00@gmail.com"
           git config --global user.name "jeongeun0"
-          git pull origin main
           git commit -am "Update image tag"
           git push -u origin main
 
