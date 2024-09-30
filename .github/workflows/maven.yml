@@ -1,5 +1,3 @@
-#Dev Branch
-
 name: github action CI
 
 on: workflow_dispatch
@@ -70,3 +68,4 @@ jobs:
           git config --global user.name "jeongeun0"
           git commit -am "Update image tag"
           git push -u origin main
+
